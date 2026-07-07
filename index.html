@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 자기소개</title>
+    <!-- 구글 폰트 적용 (Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 변수 선언: 도시적이고 깔끔한 컬러 시스템 */
+        :root {
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --primary-color: #1e293b; /* 딥 네이비 */
+            --secondary-color: #0284c7; /* 세련된 블루 */
+            --text-main: #334155;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* 메인 컨테이너: 한 화면에 들어오는 깔끔한 구조 */
+        .portfolio-container {
+            width: 100%;
+            max-width: 1050px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 상단 프로필 영역 */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-img-wrap {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
+
+        .profile-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+        }
+
+        .profile-header p {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: 300;
+        }
+
+        /* 하단 메인 콘텐츠 분할 레이아웃 */
+        .content-body {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        /* 공통 섹션 스타일 */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background-color: var(--secondary-color);
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+
+        /* 경력 / 학력 리스트 스타일 */
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .time-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .time-period {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 4px;
+        }
+
+        .time-desc {
+            font-size: 13px;
+            color: var(--text-sub);
+            list-style-type: none;
+        }
+        
+        .time-desc li {
+            position: relative;
+            padding-left: 10px;
+        }
+        .time-desc li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        /* 자격증 & 스킬 태그 스타일 */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        /* 현재 상황 하이라이트 박스 */
+        .status-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            color: #0369a1;
+        }
+
+        .status-box ul {
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+
+        /* 미디어 쿼리: 모바일 대응 */
+        @media (max-width: 768px) {
+            .content-body {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        <!-- 상단 프로필 영역 -->
+        <header class="profile-header">
+            <div class="profile-img-wrap">
+                <!-- 파일명을 상황에 맞게 수정하여 사용하세요 -->
+                <img src="KakaoTalk_20260707_104343284.jpg" alt="프로필 사진">
+            </div>
+            <h1>기획 & 데이터 분석 MD</h1>
+            <p>17년의 비즈니스 직관을 AI 데이터 분석으로 검증하고 융합합니다</p>
+        </header>
+
+        <!-- 메인 콘텐츠 영역 -->
+        <div class="content-body">
+            
+            <!-- 왼쪽 컬럼: 경력 및 프로젝트 -->
+            <div class="left-column">
+                <section class="section">
+                    <h2 class="section-title">전문 경력</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="time-title">교보문고</div>
+                        <div class="time-period">2009년 ~ 2023년 (약 14년)</div>
+                        <ul class="time-desc">
+                            <li>온라인 MD 및 전략 기획 담당</li>
+                            <li>상품 소싱, 제휴 마케팅, 전사 사업계획 수립</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time-title">아이에프네트워크</div>
+                        <div class="time-period">2006년 ~ 2009년 (약 3년)</div>
+                        <ul class="time-desc">
+                            <li>온라인 패션 MD 총괄</li>
+                            <li>업체 소싱, PB 브랜드 기획, 패션 상품 사입 및 매출/재고 관리</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">현재 집중 분야 (Current Focus)</h2>
+                    <div class="status-box">
+                        <strong>비즈니스 모델 창업 기획 및 MVP 검증 중</strong>
+                        <ul>
+                            <li>17년의 기획/MD 전문성과 3개 전공 자원 융합</li>
+                            <li>수학 앙금플라워 등 독창적인 교육·문화 비즈니스 모델 구축</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 오른쪽 컬럼: 학력, 자격증, 기술 -->
+            <div class="right-column">
+                <section class="section">
+                    <h2 class="section-title">학력 사항</h2>
+                    <div class="timeline-item">
+                        <div class="time-title">다 전공 융합 학사 졸업</div>
+                        <div class="time-desc" style="margin-top: 4px;">패션학과 · 아동학과 · 미술치료학과 졸업</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">보유 자격</h2>
+                    <div class="tag-container">
+                        <span class="tag">방과후 초등 수학 지도사 2급</span>
+                        <span class="tag">앙금플라워 1급</span>
+                        <span class="tag">아동미술지도사</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">보유 기술 & 역량 (Tech Skills)</h2>
+                    <div class="tag-container" id="tech-tags">
+                        <span class="tag" data-desc="데이터 추출 및 가공 역량">SQL / SQLD</span>
+                        <span class="tag" data-desc="데이터 시각화 및 자동화 구현">Python</span>
+                        <span class="tag" data-desc="인공지능 기반 분석 기법 수료">AI 데이터 분석</span>
+                        <span class="tag" data-desc="시장을 읽는 안목과 브랜딩 역량">상품 소싱 / MD</span>
+                        <span class="tag" data-desc="전사 단위 정량 계획 및 성과 관리">전략 기획 / 사업계획</span>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 간단한 인터랙션을 위한 JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tags = document.querySelectorAll('#tech-tags .tag');
+            
+            tags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const desc = tag.getAttribute('data-desc');
+                    alert(`[${tag.textContent}] ${desc}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
