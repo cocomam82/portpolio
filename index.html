@@ -16,6 +16,7 @@
             --card-bg: #ffffff;
             --primary-color: #1e293b; /* 딥 네이비 */
             --secondary-color: #0284c7; /* 세련된 블루 */
+            --accent-color: #0f766e; /* 청록색 포인트 */
             --text-main: #334155;
             --text-sub: #64748b;
             --border-color: #e2e8f0;
@@ -39,7 +40,7 @@
             padding: 20px;
         }
 
-        /* 메인 컨테이너: 한 화면에 들어오는 깔끔한 구조 */
+        /* 메인 컨테이너 */
         .portfolio-container {
             width: 100%;
             max-width: 1050px;
@@ -159,17 +160,40 @@
             font-size: 13px;
             color: var(--text-sub);
             list-style-type: none;
+            margin-bottom: 8px;
         }
         
         .time-desc li {
             position: relative;
             padding-left: 10px;
         }
+        
         .time-desc li::before {
             content: "•";
             position: absolute;
             left: 0;
             color: var(--secondary-color);
+        }
+
+        /* TFT 프로젝트 라벨 및 텍스트 스타일 */
+        .tft-badge {
+            display: inline-block;
+            background-color: #f0fdf4;
+            color: #166534;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .tft-list {
+            padding-left: 10px;
+            font-size: 12.5px;
+            color: #475569;
+            list-style-type: square;
         }
 
         /* 자격증 & 스킬 태그 스타일 */
@@ -213,7 +237,7 @@
             padding-left: 15px;
         }
 
-        /* 미디어 쿼리: 모바일 대응 */
+        /* 미디어 쿼리 */
         @media (max-width: 768px) {
             .content-body {
                 grid-template-columns: 1fr;
@@ -231,7 +255,6 @@
         <!-- 상단 프로필 영역 -->
         <header class="profile-header">
             <div class="profile-img-wrap">
-                <!-- 파일명을 상황에 맞게 수정하여 사용하세요 -->
                 <img src="KakaoTalk_20260707_104343284.jpg" alt="프로필 사진">
             </div>
             <h1>기획 & 데이터 분석 MD</h1>
@@ -250,8 +273,14 @@
                         <div class="time-title">교보문고</div>
                         <div class="time-period">2009년 ~ 2023년 (약 14년)</div>
                         <ul class="time-desc">
-                            <li>온라인 MD 및 전략 기획 담당</li>
-                            <li>상품 소싱, 제휴 마케팅, 전사 사업계획 수립</li>
+                            <li>온라인 MD 및 전략 기획, 전사 사업계획 수립</li>
+                            <li>온라인 프로모션, 제휴 마케팅, 사이트 분석 전담</li>
+                        </ul>
+                        <div class="tft-badge">TFT 프로젝트 참여 이력</div>
+                        <ul class="tft-list">
+                            <li>교보문고 프론트 및 백오피스 리뉴얼 핵심 구축</li>
+                            <li>교보문고 외주 컨설팅 프로젝트 참여</li>
+                            <li>사내벤처 프로그램 참여 및 신규 비즈니스 검증</li>
                         </ul>
                     </div>
 
@@ -259,19 +288,19 @@
                         <div class="time-title">아이에프네트워크</div>
                         <div class="time-period">2006년 ~ 2009년 (약 3년)</div>
                         <ul class="time-desc">
-                            <li>온라인 패션 MD 총괄</li>
-                            <li>업체 소싱, PB 브랜드 기획, 패션 상품 사입 및 매출/재고 관리</li>
+                            <li>온라인 패션 MD</li>
+                            <li>업체 소싱, PB 브랜드 기획, 패션 상품 사입 및 매출/재고 관리 전담</li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="section">
-                    <h2 class="section-title">현재 집중 분야 (Current Focus)</h2>
+                    <h2 class="section-title">현재 집중 분야 (Current Status)</h2>
                     <div class="status-box">
-                        <strong>비즈니스 모델 창업 기획 및 MVP 검증 중</strong>
+                        <strong>신규 비즈니스 모델 창업 기획 및 MVP 검증 중</strong>
                         <ul>
                             <li>17년의 기획/MD 전문성과 3개 전공 자원 융합</li>
-                            <li>수학 앙금플라워 등 독창적인 교육·문화 비즈니스 모델 구축</li>
+                            <li>수학 앙금플라워 등 독창적인 아동·융합 교육 비즈니스 모델 수립</li>
                         </ul>
                     </div>
                 </section>
@@ -282,8 +311,10 @@
                 <section class="section">
                     <h2 class="section-title">학력 사항</h2>
                     <div class="timeline-item">
-                        <div class="time-title">다 전공 융합 학사 졸업</div>
-                        <div class="time-desc" style="margin-top: 4px;">패션학과 · 아동학과 · 미술치료학과 졸업</div>
+                        <div class="time-title">다 전공 융합 학사毕业</div>
+                        <div class="time-desc" style="margin-top: 4px; color: var(--text-main); font-weight: 500;">
+                            패션학과 · 아동학과 · 미술치료학과 졸업
+                        </div>
                     </div>
                 </section>
 
@@ -293,17 +324,18 @@
                         <span class="tag">방과후 초등 수학 지도사 2급</span>
                         <span class="tag">앙금플라워 1급</span>
                         <span class="tag">아동미술지도사</span>
+                        <span class="tag">보육교사 2급</span>
                     </div>
                 </section>
 
                 <section class="section">
                     <h2 class="section-title">보유 기술 & 역량 (Tech Skills)</h2>
                     <div class="tag-container" id="tech-tags">
-                        <span class="tag" data-desc="데이터 추출 및 가공 역량">SQL / SQLD</span>
-                        <span class="tag" data-desc="데이터 시각화 및 자동화 구현">Python</span>
-                        <span class="tag" data-desc="인공지능 기반 분석 기법 수료">AI 데이터 분석</span>
-                        <span class="tag" data-desc="시장을 읽는 안목과 브랜딩 역량">상품 소싱 / MD</span>
-                        <span class="tag" data-desc="전사 단위 정량 계획 및 성과 관리">전략 기획 / 사업계획</span>
+                        <span class="tag" data-desc="데이터 추출, 조회 및 분석 가공 역량">SQL / SQLD</span>
+                        <span class="tag" data-desc="데이터 분석, 시각화 및 웹 데이터 핸들링">Python</span>
+                        <span class="tag" data-desc="인공지능 기반 분석 기법 및 데이터 시각화 과정 수료">AI 데이터 분석</span>
+                        <span class="tag" data-desc="시장을 읽는 안목, 프로모션 및 제휴 마케팅, PB 기획 역량">상품 소싱 / MD</span>
+                        <span class="tag" data-desc="전사 단위 정량 계획, 사이트 분석 및 성과 관리">전략 기획 / 사업계획</span>
                     </div>
                 </section>
             </div>
